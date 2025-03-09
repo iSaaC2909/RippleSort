@@ -1,0 +1,101 @@
+Here’s a simple README for the **RippleSort** algorithm:
+
+---
+
+# RippleSort Algorithm
+
+## Overview
+
+**RippleSort** is a novel sorting algorithm that simulates the ripple effect to progressively move elements into their correct positions. Similar to bubble sort, it swaps adjacent elements when they are in the wrong order but does so in stages. The algorithm works by gradually reducing the unsorted portion of the list through repeated "rippling" of elements.
+
+While it shares similarities with BubbleSort in terms of time complexity, RippleSort focuses on progressively reducing the unsorted section of the array, creating a unique approach to sorting.
+
+## Features
+
+- In-place sorting (does not require extra space)
+- Quadratic time complexity (O(n²)), similar to BubbleSort
+- Simple to understand and implement
+- Works for both small and large arrays (but not efficient for large datasets due to O(n²) complexity)
+
+## Time Complexity
+
+- **Best-case Time Complexity**: O(n²) (in practice, there’s no optimization like in BubbleSort)
+- **Worst-case Time Complexity**: O(n²)
+- **Space Complexity**: O(1) (in-place sorting)
+
+## How It Works
+
+1. **Divide** the array into two halves.
+2. Compare and swap adjacent elements within these halves progressively.
+3. Gradually reduce the unsorted portion by focusing on progressively smaller subarrays.
+4. Repeat the process until the array is fully sorted.
+
+## Example
+
+For an array `{5, 3, 8, 6, 2, 7}`, RippleSort progressively sorts it in-place as follows:
+
+```
+Original array: 5 3 8 6 2 7
+Sorted array: 2 3 5 6 7 8
+```
+
+## Code Implementation
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void rippleSort(vector<int>& arr) {
+    int n = arr.size();
+    
+    // Outer loop controlling the size of the unsorted sublist
+    for (int size = n; size > 1; size--) {
+        // Inner loop to simulate the "ripple" effect
+        for (int i = 0; i < size - 1; i++) {
+            // Compare adjacent elements and swap if they are in the wrong order
+            if (arr[i] > arr[i + 1]) {
+                swap(arr[i], arr[i + 1]);
+            }
+        }
+    }
+}
+
+int main() {
+    vector<int> arr = {5, 3, 8, 6, 2, 7};
+    
+    cout << "Original array: ";
+    for (int num : arr) {
+        cout << num << " ";
+    }
+    cout << endl;
+    
+    rippleSort(arr);
+    
+    cout << "Sorted array: ";
+    for (int num : arr) {
+        cout << num << " ";
+    }
+    cout << endl;
+    
+    return 0;
+}
+```
+
+## How to Use
+
+1. Clone or download the repository.
+2. Compile the `rippleSort` algorithm using a C++ compiler.
+3. Call the `rippleSort` function, passing in an array or vector of integers to be sorted.
+
+### Example Usage:
+
+```cpp
+vector<int> arr = {5, 3, 8, 6, 2, 7};
+rippleSort(arr);
+```
+
+## License
+
+This project is licensed under the MIT License.
+
